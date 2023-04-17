@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# Oct22 Recap
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## 🚊 React router 
+Lets start with routing!
+### Pages
+There are 3 component in the pages directory, we should add react router to make these pages navigable.
 
-In the project directory, you can run:
+1. install react router `npm i react-router-dom`
+2. add imports from react-router-dom to `App.js`
+3. use imports and add pages to App.js
 
-### `npm start`
+You should now be able to use the url address bar to get to all of your pages. Remember to delete the 'App component' text - we no longer need it.
+<br />
+<br />
+### Navigation
+We can use the address bar to get around the app, but it would be better if we could use a real nav.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Add a `nav` html element in your router (why does nav need to go inside the router?)
+2. Inside the nav, add an unorganised list - containing 3 list items
+3. Each list item will contain an element that will is imported from react router dom, can you add this element?
+4. Add the `nav` className to the nav html element
+<br />
+<br />
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🏡 ( Home Page )
+We're not going to do much with the home page, in fact it will be in a 'perpetual state of loading'...
 
-### `npm test`
+1. Import the `Loading` component into the `Home` page and add the classname `home` to the top level container in the Home component
+<br />
+<br />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🏡 Props ⭐️ State and 🪝 React Hooks - About & Contact Page
+1. To illustrate the use of the aforementioned aspects of React, we'll make an api call and display an image
 
-### `npm run build`
+1. In the `App.js` create an image state variable, and an appropriately named function to update the image state
+(what React hook would we want to do this?)
+2. Pass the image as a prop to the About and Contact pages
+3. In the About page destructure the `image` prop
+4. Conditionally display the image if the prop is 'truthy'
+5. Repeat steps 3 - 4 for the Contact page
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Stretch - Add an input, to allow the user to select a character by number
+<br />
+<br />
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## ⭐️ More on State  - Toggling visibility of About Page info 
+In the data folder, we have some info for the about page
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Import this data into the About page
+2. Create some `aboutData` state and use the imported data as the initial state
+3. `.map` the `aboutData` state within the component return statement.Render a `button` for each title and `p` for each description in the array
+4. Add an empty event handler prop to the button
+5. Create an event hanler function called `handleClick`, leave the contents empty for now
+6. We need an intermediate variable, create a var called `newData`. Map the aboutData state (leave map implementation empty for now)
+7. Name parameter `data`, if the `data.id` matches the id we will pass to this function then ('?') we will ('do something') or (':') we wil ('do something else')
+8. If true we will spread `data` and update the `visible` proerty to the inverse value using the bang operator `!`
+9. If false we will simply return the data, we now need to `setAboutData` with the `newData`
 
-### `npm run eject`
+Stretch: In your own time add a css transition to make toggling the visibility in the UI smoother
+<br />
+<br />
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🎷 Events & Forms - Contact Page 
+1. Create some `formData` state
+2. Add a form html element, with an empty onSubmit handler (can make this a comment for now)
+3. Add input and button elements within the form
+4. The input should be of type text and have an onChange handler, set the value of this handler to `handleChange`
+5. We need to create this handler, it will need to access the event target's value. We will use this to `setFormData` when the input's value changes
+6. The button should be of type submit and contain the text submit
+7. Back to the form's submit handler, we will now create the `handleSubmit` function, create an empty function for now
+8. We need to prevent the default behaviour when submitting forms, what is this?
+9. This is where in a real application we might use axios to post formata to a database but we will just console.log it instead!
+￼
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
